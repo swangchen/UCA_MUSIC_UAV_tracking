@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue-axios get请求</title>
+	<script type="text/javascript" src="./lib/vue-2.6.10.min.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="button" value="axios GET 请求" @click='getInfo'>
+        <p>嗨客网（www.haicoder.net）</p>
+	</div>
+</body>
+<script type="text/javascript">
+	var vm = new Vue({
+        el : '#app',
+        data:{
+        	msg: "嗨客网"
+        },
+        methods:{
+        	getInfo() {
+                axios.get('http://localhost:3000/Server').then((data)=>{
+                	console.log(data);
+                });
+        	}
+        }
+    });
+</script>
+</html>

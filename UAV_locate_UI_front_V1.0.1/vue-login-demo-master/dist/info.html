@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+    <!-- 引入 Element UI CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+    <div id="app">
+        <el-container>
+            <el-header>
+                <h1>管理系统</h1>
+            </el-header>
+            <el-main>
+                <el-button type="primary" @click="goTo('/node/nodeindex.html')">节点管理</el-button>
+                <el-button type="primary" @click="goTo('/database/databaseindex.html')">数据库管理</el-button>
+                <el-button type="primary" @click="goTo('/script/scriptindex.html')">算法管理</el-button>
+            </el-main>
+        </el-container>
+    </div>
+
+    <!-- 引入 Vue.js 和 Element UI JavaScript -->
+    <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.15.6/lib/index.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            methods: {
+                goTo: function (url) {
+                    window.location.href = url;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

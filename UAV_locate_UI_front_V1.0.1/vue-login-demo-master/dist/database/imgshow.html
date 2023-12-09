@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Get Image by ID</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>显示图像</h1>
+        
+        <!-- 输入要查看的图像的ID -->
+        <input type="number" id="imageId" placeholder="输入图像ID">
+        <button onclick="showImage()">显示图像</button>
+        
+        <!-- 图像容器 -->
+        <div id="imageContainer">
+            <img id="displayedImage" src="" alt="图像">
+        </div>
+    </div>
+    
+    <!-- JavaScript代码 -->
+    <script>
+        function showImage() {
+            const imageId = document.getElementById("imageId").value;
+            const imageContainer = document.getElementById("imageContainer");
+            const displayedImage = document.getElementById("displayedImage");
+            
+            // 向后端发送请求获取图像路径
+            fetch(`http://localhost:8081/api/images/showimg/${imageId}`)
+                .then(response => response.text())
+                .then(imagePath => {
+                    if (imagePath.startsWith("file://")) {
+                        // 如果路径以 file:// 开头，表示本地文件路径
+                        // 不能直接加载本地文件路径，需要后端返回图像数据
+                        console.error("不能加载本地文件路径，请确保后端返回图像数据。");
+                    } else {
+                        // 设置图像的src属性
+                        displayedImage.src = imagePath;
+                        
+                        // 显示图像容器
+                        imageContainer.style.display = "block";
+                    }
+                })
+                .catch(error => console.error(error));
+        }
+    </script>
+</body>
+</html>

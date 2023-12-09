@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>显示图像和信息</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div class="container" id="app">
+        <h1>显示图像和信息</h1>
+        
+        <!-- 输入要查看的图像的ID -->
+        <input type="number" v-model="imageId" placeholder="输入图像ID">
+        <button @click="getImageInfo">显示图像和信息</button>
+        
+        <!-- 图像信息 -->
+        <div v-if="imageInfo">
+            <h2>图像信息</h2>
+            <p>ID: {{ imageInfo.id }}</p>
+            <p>Name: {{ imageInfo.name }}</p>
+            <p>Class1: {{ imageInfo.class1 }}</p>
+            <p>Class2: {{ imageInfo.class2 }}</p>
+            <p>Weight: {{ imageInfo.weight }}</p>
+            <p>Path: {{ imageInfo.path }}</p>
+        </div>
+
+        <!-- 图像容器 -->
+        <div v-if="imagePath">
+            <h2>图像</h2>
+            <img :src="imagePath" alt="图像">
+        </div>
+    </div>
+    
+    <!-- JavaScript代码 -->
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                imageId: "",
+                imageInfo: null,
+                imagePath: "" // 添加一个属性来保存图像路径
+            },
+            methods: {
+                getImageInfo() {
+                    // 向后端发送请求获取图像信息和路径
+                    fetch(`http://localhost:8081/api/images/find/${this.imageId}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            this.imageInfo = data;
+                            this.imagePath = data.path; // 设置图像路径
+                        })
+                        .catch(error => console.error(error));
+                }
+            }
+        });
+    </script>
+</body>
+</html>

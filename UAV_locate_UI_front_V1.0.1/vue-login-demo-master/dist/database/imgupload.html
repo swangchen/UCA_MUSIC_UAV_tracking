@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>文件上传</title>
+</head>
+<body>
+    <h1>文件上传</h1>
+    <form enctype="multipart/form-data" method="post" action="http://localhost:8081/api/images/upload">
+    
+        <div>
+            <label for="file">选择文件：</label>
+            <input type="file" name="file" id="file" />
+        </div>
+        <div>
+            <label for="name">名称：</label>
+            <input type="text" name="name" id="name" />
+        </div>
+        <div>
+            <label for="class1">Class1：</label>
+            <input type="text" name="class1" id="class1" />
+        </div>
+        <div>
+            <label for="class2">Class2：</label>
+            <input type="text" name="class2" id="class2" />
+        </div>
+        <div>
+            <label for="weight">Weight：</label>
+            <input type="text" name="weight" id="weight" />
+        </div>
+        <div>
+            <input type="submit" value="上传文件" />
+        </div>
+    </form>
+</body>
+</html>

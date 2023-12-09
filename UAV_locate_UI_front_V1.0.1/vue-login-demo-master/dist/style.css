@@ -1,0 +1,39 @@
+/* 设置页面背景图 */
+body {
+    background-image: url('background.png'); /* 背景图路径 */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 样式化标题 */
+h1 {
+    font-size: 36px;
+    color: #333;
+    text-align: center;
+}
+
+/* 样式化按钮 */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF; /* 按钮背景颜色 */
+    color: #fff; /* 文字颜色 */
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* 添加过渡效果 */
+}
+
+.button:hover {
+    background-color: #0056b3; /* 鼠标悬停时的背景颜色 */
+}
